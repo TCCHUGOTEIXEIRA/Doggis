@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block breadcrumb %}
+  <li class="breadcrumb-item active">Delete</li>
+{% endblock %}
+
+{% block content %}
+<a href="{% url 'produto' produto_id=produto.id %}">
+  <h1 class="d-none d-md-block text-secondary text-center text-md-left">{{produto.nome}}</h1>
+  <h2 class="d-md-none text-secondary text-center text-md-left">{{produto.nome}}</h2>
+
+</a>
+
+<div class="alert alert-danger" role="alert">
+    Ao deletar o produto, todo o histórico dele também será deletado.
+</div>
+
+<form enctype="multipart/form-data" method="post" novalidate>
+    {% csrf_token %}
+    {% include 'includes/form.html' %}
+  <div class="d-flex flex-row-reverse mb-5">
+    <button type="submit" class="btn btn-light text-danger float-md-right">Deletar Produto</button>
+    <a class="btn btn-light text-secondary mx-3" href="{% url 'produto' produto_id=produto.id %}"> Cancelar</a>
+  </div>
+</form>
+
+{% endblock %}

@@ -1,0 +1,122 @@
+body {
+          overflow-y: scroll;
+      font-family: 'Slabo 27px', serif;
+}
+
+#title{
+    font-family: 'Beth Ellen', cursive;
+}
+
+.font-cursive{
+  font-family: 'Beth Ellen', cursive;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: none;
+}
+
+.logo {
+    font-family: 'Slabo 27px', serif;
+}
+
+.logo a {
+  color: "#446488";
+}
+
+.logo a:hover,
+.logo a:active {
+  text-decoration: none;
+}
+
+input{
+
+    font-family: 'Slabo 27px', serif;
+}
+
+.form-group-accounts{
+  display: grid;
+  grid-template-columns:repeat(2, 1fr);
+  grid-column-gap: 1em;
+  grid-row-gap: 1em;
+}
+.form-group-accounts div{
+}
+
+.input-file{
+  display: none;
+}
+
+.profile_img{
+  width:40px !important;
+  height:40px !important;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  object-fit: cover;
+}
+
+.dcard{
+  box-shadow: 0px 0px 5px rgba(50,50,50,0.3);
+  width: 15em;
+
+  -webkit-transition: box-shadow 200ms ease-out;
+  -moz-transition: box-shadow 200ms ease-out;
+  -o-transition: box-shadow 200ms ease-out;
+  transition: box-shadow 200ms ease-out;
+}
+
+
+.dcard:hover{
+  box-shadow: 0px 0px 2px rgba(50,50,50,0.2);
+}
+
+.dcard:active{
+  box-shadow: 0px 1px 2px rgba(50,50,50,0.3);
+}
+
+
+.ecard{
+  box-shadow: 0px 0px 5px rgba(50,50,50,0.3);
+
+  -webkit-transition: box-shadow 200ms ease-out;
+  -moz-transition: box-shadow 200ms ease-out;
+  -o-transition: box-shadow 200ms ease-out;
+  transition: box-shadow 200ms ease-out;
+}
+
+
+.ecard:hover{
+  box-shadow: 0px 0px 2px rgba(50,50,50,0.2);
+}
+
+.ecard:active{
+  box-shadow: 0px 1px 2px rgba(50,50,50,0.3);
+}
+
+.scaling-svg {
+ position: absolute;
+ height: 100%;
+ width: 100%;
+ left: 0;
+ top: 0;
+}
+
+.scaling-svg-container {
+ position: relative;
+ left:0;
+ top:0;
+ width:100%;
+ height: auto;
+}

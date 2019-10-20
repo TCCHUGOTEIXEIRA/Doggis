@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block stylesheet %}
+{% endblock %}
+
+{% block content %}
+<h1 class="text-secondary text-center display-4">{{servico.nome}}</h1>
+
+<div class="d-flex flex-column align-items-center">
+
+  <ul class="list-group w-50">
+    <li class="list-group-item">
+      <div class="d-flex flex-row justify-content-between">
+        <p class="m-2 text-secondary">Nome:</p>
+        <p class="m-2">{{servico.nome}}</p>
+      </div>
+    </li>
+    <li class="list-group-item">
+      <div class="d-flex flex-row justify-content-between">
+        <p class="m-2 text-secondary">Tempo:</p>
+        <p class="m-2">{{servico.tempo_estimado}} min.</p>
+      </div>
+    </li>
+    <li class="list-group-item">
+      <div class="d-flex flex-row justify-content-between">
+        <p class="m-2 text-secondary">Informações:</p>
+        <p class="m-2">{{servico.info}}</p>
+      </div>
+    </li>
+    <li class="list-group-item">
+      <div class="d-flex flex-row justify-content-between">
+        <p class="m-2 text-secondary">Preço:</p>
+        <p class="m-2">R$ {{servico.preco}}</p>
+      </div>
+    </li>
+    <li class="list-group-item">
+      <div class="d-flex flex-row justify-content-between">
+        <p class="m-2 text-secondary">Produtos utilizados:</p>
+        {% for produto in servico.produtos_utilizados.all %}
+        <a href="{% url 'produto' produto_id=produto.id %}" class="m-2 bg-secondary text-light rounded px-1">{{produto}}</a>
+        {% endfor %}
+      </div>
+    </li>
+  </ul>
+
+  {% if user.profile.isAdmin %}
+  <a href="{% url 'editar_servico' servico_id=servico.id %}" class="btn btn-light text-secondary mx-3 mt-2 btn-block w-50">Editar serviço</a>
+  {% endif %}
+
+  <a href="{% url 'registrar_servico' servico_id=servico.id %}" class="btn btn-primary mr-0 mb-3 ml-2 btn-block w-50">Registrar serviço prestado</a>
+
+  <h1 class="mt-5 text-secondary"> Históricos</h1>
+
+  <a href="{% url 'precos_servico' servico_id=servico.id %}" class="btn btn-light text-secondary btn-block w-50">Preços</a>
+  <a href="{% url 'prestacoes_servico' servico_id=servico.id %}" class="btn btn-light text-secondary btn-block w-50">Prestações de serviços</a>
+
+</div>
+{% endblock %}

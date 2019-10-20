@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block stylesheet %}
+{% endblock %}
+
+{% block content %}
+<div class="d-flex flex-row justify-content-between align-items-center my-3">
+  <h1 class="text-secondary display-4">Movimentações de Estoque</h1>
+</div>
+
+  {% for fluxo in fluxos %}
+  {% if fluxo.isStocking %}
+    <div class="alert alert-primary">
+      <div class="d-flex flex-row justify-content-between">
+        <p class="m-2 text-secondary">
+          {{fluxo.ocorrido_em}}
+        </p>
+        <p class="m-2 text-secondary">
+          Produto:
+          <span class="text-dark">
+            {{fluxo.produto}}
+          </span>
+        </p>
+        <p class="m-2 text-secondary">
+          Responsável:
+          <span class="text-dark">
+            {{fluxo.responsavel}}
+          </span>
+        </p>
+        <p class="m-2 text-secondary">
+          Quantidade anterior:
+          <span class="text-dark">
+            {{fluxo.quantidade_anterior}}
+          </span>
+        </p>
+        <b>
+          <p class="m-2 text-dark">
+            Quantidade final:
+            <span class="text-primary">
+              {{fluxo.quantidade_posterior}}
+            </span>
+          </p>
+        </b>
+      </div>
+    </div>
+  {% else %}
+  <div class="alert alert-danger">
+    <div class="d-flex flex-row justify-content-between">
+      <p class="m-2 text-secondary">
+        {{fluxo.ocorrido_em}}
+      </p>
+      <p class="m-2 text-secondary">
+        Produto:
+        <span class="text-dark">
+          {{fluxo.produto}}
+        </span>
+      </p>
+      <p class="m-2 text-secondary">
+        Responsável:
+        <span class="text-dark">
+          {{fluxo.responsavel}}
+        </span>
+      </p>
+      <p class="m-2 text-secondary">
+        Quantidade anterior:
+        <span class="text-dark">
+          {{fluxo.quantidade_anterior}}
+        </span>
+      </p>
+      <b>
+        <p class="m-2 text-dark">
+          Quantidade final:
+          <span class="text-danger">
+            {{fluxo.quantidade_posterior}}
+          </span>
+        </p>
+      </b>
+    </div>
+  </div>
+  {% endif %}
+  {% endfor %}
+{% endblock %}

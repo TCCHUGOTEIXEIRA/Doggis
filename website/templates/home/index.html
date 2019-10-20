@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block stylesheet %}
+{% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+    {% if user.profile.isClient %}
+    <div class="d-flex flex-row justify-content-center w-100">
+      <div class="scaling-svg-container w-75" style="height: 50vh;" >
+        {% include 'includes/svg/construction.html' %}
+      </div>
+    </div>
+    <div class="alert alert-primary my-4">
+      <h4 class="text-center m-3">
+        A interface de cliente ainda não está implementada.
+      </h4>
+    </div>
+    {% else %}
+    {% include 'home/logged.html' %}
+    {% endif %}
+  {% else %}
+
+    {% include 'home/not_logged.html' %}
+
+{% endif %}
+
+{% endblock %}
+
+{% block js %}
+{% endblock %}

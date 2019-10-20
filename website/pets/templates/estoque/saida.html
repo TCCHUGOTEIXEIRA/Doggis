@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block stylesheet %}
+{% endblock %}
+
+{% block content %}
+<div class="d-flex flex-row justify-content-between align-items-center my-3">
+  <h1 class="text-secondary display-4">Saída no Estoque</h1>
+</div>
+
+<p class="text-danger">Escolha o produto abaixo que deseja registrar a saída.</p>
+
+<div class="d-flex flex-row flex-wrap justify-content-start mt-5">
+  {% for produto in produtos%}
+  <div class="container rounded border dcard m-2 px-0">
+    <a href="{% url 'saida_produto' produto_id=produto.id %}">
+      <h5 class="mx-3 mt-3 mb-0 text-danger">
+        {{produto.nome}}
+      </h5>
+    <p  class="mx-3 text-dark">
+      <small>
+        {{produto.info}}
+      </small>
+    </p>
+  </a>
+    <hr class="my-0">
+    <div class="d-flex flex-row justify-content-between">
+      <p class="p-2 mb-0 w-100 text-center">
+        R$ {{produto.preco}}
+      </p>
+      <div class="m-0 p-0 border-left" ></div>
+      <p class="m-2 w-100 text-center">
+        {{produto.quantidade}} un.
+      </p>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+
+{% endblock %}

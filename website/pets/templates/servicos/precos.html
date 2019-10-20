@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block stylesheet %}
+{% endblock %}
+
+{% block breadcrumb %}
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+  <div class="col-sm-9">
+    <a href="{% url 'servico' servico_id=servico.id %}">
+      <h1 class="d-none d-md-block text-secondary text-center text-md-left">{{servico.nome}}</h1>
+      <h2 class="d-md-none text-secondary text-center text-md-left">{{servico.nome}}</h2>
+    </a>
+  </div>
+  <div class="col-sm-3">
+  </div>
+  <div class="col-sm-9">
+    <p class="text-secondary text-center text-md-left">Histórico de preços.</p>
+  </div>
+  <div class="col-sm-3"></div>
+</div>
+
+<ul class="list-group">
+  {% for preco in precos %}
+  <li class="list-group-item bg-white">
+    <div class="d-flex flex-row justify-content-between">
+      <p class="m-2 text-secondary">{{preco.alterado_em}}</p>
+      <p class="m-2 text-dark">Responsavel: <span class="text-secondary">{{preco.responsavel}}</span></p>
+      <p class="m-2 text-dark">Preço anterior: <span class="text-secondary">{{preco.antigo_preco}}</span></p>
+      <p class="m-2 text-dark"><b>Preço corrente: <span class="text-primary">{{preco.novo_preco}}</span></b></p>
+    </div>
+  </li>
+  {% endfor %}
+</ul>
+
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load custom_tags %}
+{% load form_tags widget_tweaks %}
+
+{% block title %}My account{% endblock %}
+
+{% block breadcrumb %}
+  <li class="breadcrumb-item active">My account</li>
+{% endblock %}
+
+{% block content %}
+
+<form enctype="multipart/form-data" method="post" novalidate>
+  {% csrf_token %}
+  {{ formset.management_form }}
+  <div class="d-flex flex-row-reverse">
+    <button type="submit" class="btn btn-primary mb-4">Salvar alterações</button>
+  </div>
+  <div class="d-flex flex-row flex-wrap justify-content-between">
+    {% for form in formset %}
+    <div class="card mb-3" style="width: 14rem;">
+      {% with index=forloop.counter|get_index %}
+      {% with profile=profiles|get_object:index %}
+
+      <a href="{% url 'user_profile' profile_id=profile.id %}">
+        <img src="{{ profile.picture.url }}" alt="profile picture" class="card-img-top"/>
+      </a>
+      <div class="card-body">
+
+        <h5 class="text-center text-secondary">{{ profile.name }}</h5>
+        {% endwith %}
+        {% endwith %}
+
+        {% for field in form %}
+        {% render_field field class="custom-select" %}
+        {% endfor %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</form>
+
+
+
+{% endblock %}
+
+{% block js %}
+  <script src="{% static 'js/users_profile.js' %}"></script>
+{% endblock %}

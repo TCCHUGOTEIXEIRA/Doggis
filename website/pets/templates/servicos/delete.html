@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block breadcrumb %}
+  <li class="breadcrumb-item active">Delete</li>
+{% endblock %}
+
+{% block content %}
+<a href="{% url 'servico' servico_id=servico.id %}">
+  <h1 class="d-none d-md-block text-secondary text-center text-md-left">{{servico.nome}}</h1>
+  <h2 class="d-md-none text-secondary text-center text-md-left">{{servico.nome}}</h2>
+
+</a>
+<div class="container border-left pr-0 pl-0 pl-md-2 mb-4">
+
+<div class="alert alert-danger" role="alert">
+    Ao deletar o serviço, todo o histórico dele também será deletado.
+</div>
+</div>
+
+<form enctype="multipart/form-data" method="post" novalidate>
+    {% csrf_token %}
+    {% include 'includes/form.html' %}
+  <div class="d-flex flex-row-reverse mb-5">
+    <button type="submit" class="btn btn-light text-danger float-md-right">Deletar Serviço</button>
+    <a class="btn btn-light text-secondary mx-3" href="{% url 'servico' servico_id=servico.id %}"> Cancelar</a>
+  </div>
+</form>
+
+{% endblock %}

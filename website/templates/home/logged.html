@@ -1,0 +1,52 @@
+
+{% block content %}
+  <h1 id="title" class="display-1 text-primary text-center w-100 mt-5 mb-3 pb-5"> Doggis</h1>
+
+<div class="d-flex flex-row flex-wrap justify-content-center">
+  <a href="{% url 'produtos' %}" class="m-2">
+    <div class="container w-100 ecard px-4 pt-4 pb-2">
+      <div class="scaling-svg-container" style="height: 250px; width: 400px;">
+            {% include 'includes/svg/estoque.html' %}
+      </div>
+      <h4 class="text-center w-100 m-2">Produtos</h4>
+    </div>
+  </a>
+
+  <a href="{% url 'servicos' %}"  class="m-2">
+    <div class="container w-100 ecard px-4 pt-4 pb-2">
+      <div class="scaling-svg-container" style="height: 250px; width: 400px;">
+            {% include 'includes/svg/dog2.html' %}
+      </div>
+      <h4 class="text-center w-100 m-2">Serviços</h4>
+    </div>
+  </a>
+
+  </div>
+
+  <div class="d-flex flex-row flex-wrap justify-content-center">
+
+  <a href="{% url 'estoque' %}"  class="m-2">
+    <div class="container w-100 ecard px-4 pt-4 pb-2">
+      <div class="scaling-svg-container" style="height: 250px; width: 400px;">
+            {% include 'includes/svg/estoque_entrada.html' %}
+      </div>
+      <h4 class="text-center w-100 m-2">Estoque</h4>
+    </div>
+  </a>
+
+  <a href="{% url 'notificacao' %}"  class="m-2">
+    <div class="container w-100 ecard px-4 pt-4 pb-2">
+      <div class="scaling-svg-container" style="height: 250px; width: 400px;">
+            {% include 'includes/svg/email.html' %}
+      </div>
+      <h4 class="text-center w-100 m-2">Notificação de reserva</h4>
+    </div>
+  </a>
+
+</div>
+
+<div class="container p-3 m-3">
+
+</div>
+
+{% endblock %}

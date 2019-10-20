@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block stylesheet %}
+  <link rel="stylesheet" href="{% static 'css/account.css' %}">
+{% endblock %}
+
+{% block title %}My account{% endblock %}
+
+{% block breadcrumb %}
+  <li class="breadcrumb-item active">My account</li>
+{% endblock %}
+
+{% block content %}
+
+  <div class="d-flex flex-row justify-content-start">
+    <div class="d-inline scaling-svg-container" style="height: 75px; width:150px;">
+      {% include 'includes/svg/dog3.html' %}
+    </div>
+    <h1 class="text-secondary display-4 w-100 m-1">{{profile.getRole}}</h1>
+  </div>
+
+  <hr>
+
+  <form enctype="multipart/form-data" method="post" novalidate>
+    {% csrf_token %}
+    {% include 'includes/account_form.html' %}
+    <div class="d-flex flex-row-reverse">
+      <button type="submit" class="btn btn-primary">Salvar alterações</button>
+    </div>
+  </form>
+
+{% endblock %}
+
+{% block js %}
+  <script src="{% static 'js/account.js' %}"></script>
+{% endblock %}

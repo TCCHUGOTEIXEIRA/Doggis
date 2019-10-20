@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="{% static 'css/account.css' %}">
+{% endblock %}
+
+
+{% block content %}
+<h1 class="display-4 text-center text-secondary">
+  {{profile.name}}
+</h1>
+
+<div class="d-flex flex-row justify-content-center my-5">
+  <img src="{{ profile.picture.url }}" alt="profile picture" id="profile_img_2"/>
+</div>
+
+<div class="d-flex flex-row justify-content-center my-4">
+  <ul class="list-group w-50">
+    <li class="list-group-item">
+      <div class="d-flex flex-row justify-content-between">
+        <p class="text-dark m-2">
+          Nome:
+        </p>
+        <p class="text-primary m-2">
+          {{profile.name}}
+        </p>
+      </div>
+    </li>
+    <li class="list-group-item">
+      <div class="d-flex flex-row justify-content-between">
+        <p class="text-dark m-2">
+          Usuário:
+        </p>
+        <p class="text-primary m-2">
+          {{profile.user.username}}
+        </p>
+      </div>
+    </li>
+    <li class="list-group-item">
+      <div class="d-flex flex-row justify-content-between">
+        <p class="text-dark m-2">
+          Posição:
+        </p>
+        <p class="text-primary m-2">
+          {{profile.getRole}}
+        </p>
+      </div>
+    </li>
+    <li class="list-group-item">
+      <div class="d-flex flex-row justify-content-between">
+        <p class="text-dark m-2">
+          E-mail:
+        </p>
+        <p class="text-primary m-2">
+          {{profile.user.email}}
+        </p>
+      </div>
+    </li>
+  </ul>
+
+</div>
+<!-- <div class="d-flex flex-row justify-content-center w-100">
+  <a href="" class="btn btn-light text-secondary btn-block w-50">Editar Usuário</a>
+</div> -->
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block stylesheet %}
+{% endblock %}
+
+{% block content %}
+<h1 class="text-secondary text-center display-4">{{produto.nome}}</h1>
+<div class="d-flex flex-column align-items-center">
+
+  <ul class="list-group w-50">
+    <li class="list-group-item">
+      <div class="d-flex flex-row justify-content-between">
+        <p class="m-2 text-secondary">Nome:</p>
+        <p class="m-2">{{produto.nome}}</p>
+      </div>
+    </li>
+    <li class="list-group-item">
+      <div class="d-flex flex-row justify-content-between">
+        <p class="m-2 text-secondary">Fabricante:</p>
+        <p class="m-2">{{produto.fabricante}}</p>
+      </div>
+    </li>
+    <li class="list-group-item">
+      <div class="d-flex flex-row justify-content-between">
+        <p class="m-2 text-secondary">Informações:</p>
+        <p class="m-2">{{produto.info}}</p>
+      </div>
+    </li>
+    <li class="list-group-item">
+      <div class="d-flex flex-row justify-content-between">
+        <p class="m-2 text-secondary">Registro:</p>
+        <p class="m-2">{{produto.registrado_em}}</p>
+      </div>
+    </li>
+    <li class="list-group-item">
+      <div class="d-flex flex-row justify-content-between">
+        <p class="m-2 text-secondary">Preço:</p>
+        <p class="m-2">R$ {{produto.preco}}</p>
+      </div>
+    </li>
+    <li class="list-group-item">
+      <div class="d-flex flex-row justify-content-between">
+        <p class="m-2 text-secondary">Quantidade:</p>
+        <p class="m-2">{{produto.quantidade}}</p>
+      </div>
+    </li>
+  </ul>
+
+{% if user.profile.isAdmin %}
+<a href="{% url 'editar_produto' produto_id=produto.id %}" class="btn btn-light text-secondary m-3 btn-block w-50">Editar Produto</a>
+</div>
+{% endif %}
+
+{% endblock %}

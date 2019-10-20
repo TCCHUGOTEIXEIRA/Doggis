@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block body %}
+  <div class="container">
+    <h1 class="text-center logo my-4">
+      <a href="{% url 'home' %}">
+      <h1 id="title" class="display-1 text-primary text-center w-100 mt-5 pb-5"> Doggis</h1>
+    </a>
+    </h1>
+    {% block content %}
+    {% endblock %}
+  </div>
+{% endblock %}

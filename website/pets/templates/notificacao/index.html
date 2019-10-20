@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block stylesheet %}
+{% endblock %}
+
+{% block content %}
+<div class="d-flex flex-row justify-content-between align-items-center my-3">
+  <h1 class="text-secondary display-4">Notificação de Serviço</h1>
+</div>
+
+<div class="d-flex flex-row justify-content-around">
+  <div class="container">
+    <div class="scaling-svg-container" style="height: 400px;">
+          {% include 'includes/svg/email.html' %}
+    </div>
+    <div class="d-flex flex-row justify-content-center">
+      <a href="{% url 'notificacao_nova' %}" class="btn btn-primary btn-block w-50 text-center">Criar notificação de serviço</a>
+    </div>
+  </div>
+</div>
+
+<hr class="my-5">
+
+<div class="d-flex flex-row justify-content-between align-items-center">
+  <a href="{% url 'notificacao_lista' %}">
+    <h2 class="text-secondary"> Últimas notificações de serviço</h2>
+  </a>
+  <a href="{% url 'notificacao_lista' %}" class="btn btn-light text-primary">Ver Todas</a>
+</div>
+
+<ul class="list-group mb-5 mt-3">
+  {% for notificacao in notificacoes %}
+    <li class="list-group-item">
+      <div class="d-flex flex-row justify-content-bewtween">
+        <div class="container w-50">
+          <p class="m-2 text-secondary">Cliente: <span class="text-primary">{{notificacao.nome_do_cliente}}</span></p>
+          <p class="m-2 text-secondary">E-mail: <span class="text-primary">{{notificacao.email_do_cliente}}</span></p>
+          <p class="m-2 text-secondary">Serviço: <span class="text-primary">{{notificacao.servico}}</span></p>
+          <p class="m-2 text-secondary">Data e hora: <span class="text-primary">{{notificacao.horario}}</span></p>
+        </div>
+        <div class="coantainer m-0 p-0 border-left"></div>
+        <div class="container w-50">
+          <p  class="my-0">Prezado(a), {{notificacao.nome_do_cliente}}</p>
+          <p class="my-2"> Gostaríamos de lembrar que <b>{{notificacao.horario}}</b> está reservado para o seu pet estar conosco, para <b>{{notificacao.servico}}</b>. </p>
+          <p class="my-0">Esperamos por você e seu pet,</p>
+          <p class="my-0">Equipe Doggis</p>
+        </div>
+      </div>
+    </li>
+  {% endfor %}
+</ul>
+
+{% endblock %}

@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block stylesheet %}
+{% endblock %}
+
+{% block content %}
+<div class="d-flex flex-row justify-content-between align-items-center my-3">
+  <h1 class="text-secondary display-4">Estoque</h1>
+</div>
+
+<div class="d-flex flex-row justify-content-around">
+  <div class="container m-5 w-50">
+    <div class="scaling-svg-container" style="height: 250px;">
+          {% include 'includes/svg/estoque_entrada.html' %}
+    </div>
+    <a href="{% url 'estoque_entrada' %}" class="btn btn-light text-primary btn-block"><b>Entrada </b>de Produtos no Estoque</a>
+  </div>
+  <div class="container m-5 w-50">
+    <div class="scaling-svg-container" style="height: 250px;">
+          {% include 'includes/svg/estoque_saida.html' %}
+    </div>
+    <a href="{% url 'estoque_saida' %}" class="btn btn-light text-danger btn-block"><b>Saída</b> de Produtos no Estoque</a>
+  </div>
+</div>
+
+<hr>
+
+<a href="{% url 'movimentacoes' %}">
+  <h2 class="text-secondary"> Últimas movimentações de estoque</h2>
+</a>
+
+  {% for fluxo in fluxos %}
+  {% if fluxo.isStocking %}
+    <div class="alert alert-primary">
+      <div class="d-flex flex-row justify-content-between">
+        <p class="m-2 text-secondary">
+          {{fluxo.ocorrido_em}}
+        </p>
+        <p class="m-2 text-secondary">
+          Produto:
+          <span class="text-dark">
+            {{fluxo.produto}}
+          </span>
+        </p>
+        <p class="m-2 text-secondary">
+          Responsável:
+          <span class="text-dark">
+            {{fluxo.responsavel}}
+          </span>
+        </p>
+        <p class="m-2 text-secondary">
+          Quantidade anterior:
+          <span class="text-dark">
+            {{fluxo.quantidade_anterior}}
+          </span>
+        </p>
+        <b>
+          <p class="m-2 text-dark">
+            Quantidade final:
+            <span class="text-primary">
+              {{fluxo.quantidade_posterior}}
+            </span>
+          </p>
+        </b>
+      </div>
+    </div>
+  {% else %}
+  <div class="alert alert-danger">
+    <div class="d-flex flex-row justify-content-between">
+      <p class="m-2 text-secondary">
+        {{fluxo.ocorrido_em}}
+      </p>
+      <p class="m-2 text-secondary">
+        Produto:
+        <span class="text-dark">
+          {{fluxo.produto}}
+        </span>
+      </p>
+      <p class="m-2 text-secondary">
+        Responsável:
+        <span class="text-dark">
+          {{fluxo.responsavel}}
+        </span>
+      </p>
+      <p class="m-2 text-secondary">
+        Quantidade anterior:
+        <span class="text-dark">
+          {{fluxo.quantidade_anterior}}
+        </span>
+      </p>
+      <b>
+        <p class="m-2 text-dark">
+          Quantidade final:
+          <span class="text-danger">
+            {{fluxo.quantidade_posterior}}
+          </span>
+        </p>
+      </b>
+    </div>
+  </div>
+  {% endif %}
+  {% endfor %}
+{% endblock %}

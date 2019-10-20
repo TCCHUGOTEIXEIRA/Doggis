@@ -1,0 +1,49 @@
+{% load form_tags widget_tweaks %}
+
+{% if profile_form.non_field_errors %}
+  <div class="alert alert-danger" role="alert">
+    {% for error in profile_form.non_field_errors %}
+      <p{% if forloop.last %} class="mb-0"{% endif %}>{{ error }}</p>
+    {% endfor %}
+  </div>
+{% endif %}
+
+{% for field in profile_form %}
+
+  <div class="form-group">
+    <img id='profile_img' src="{{ user.profile.picture.url }}" alt="profile picture" class="img-thumbnail rounded-circle m-3" style="width:90px; margin-top:0;"/>
+    <label for="id_picture" class="btn btn-light">Select file</label>
+    <div class="input-file">
+      {% render_field field class=field|input_class %}
+    </div>
+    {% for error in field.errors %}
+      <div class="invalid-feedback">
+        {{ error }}
+      </div>
+    {% endfor %}
+    {% if field.help_text %}
+      <small class="form-text text-muted">
+        {{ field.help_text|safe }}
+      </small>
+    {% endif %}
+  </div>
+{% endfor %}
+
+<div class="form-group-accounts">
+{% for field in user_form %}
+  <div class="form-group">
+    {{ field.label_tag }}
+    {% render_field field class=field|input_class %}
+    {% for error in field.errors %}
+      <div class="invalid-feedback">
+        {{ error }}
+      </div>
+    {% endfor %}
+    {% if field.help_text %}
+      <small class="form-text text-muted">
+        {{ field.help_text|safe }}
+      </small>
+    {% endif %}
+  </div>
+{% endfor %}
+</div>
